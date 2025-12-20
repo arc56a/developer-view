@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلُــــعـــرآبـــ | مبرمج ومطور برمجيات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Instagram Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tech-glow:hover {
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
+        .bio-gradient {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(129, 140, 248, 0.1) 100%);
+        }
+
+        /* --- Tech Orb Animation Enhanced --- */
+        .orb-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .center-node {
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(circle, #38bdf8 0%, #1e40af 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            animation: pulse-glow 2s infinite alternate;
+        }
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 20px #38bdf8; transform: scale(1); }
+            to { box-shadow: 0 0 50px #818cf8; transform: scale(1.1); }
+        }
+        .lang-icon {
+            position: absolute;
+            padding: 6px 14px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #7dd3fc;
+            animation: orbit linear infinite;
+            white-space: nowrap;
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+        }
+        
+        /* Different speeds and delays for a realistic orbit effect */
+        .lang-1 { animation-duration: 8s; }
+        .lang-2 { animation-duration: 10s; animation-delay: -1.5s; }
+        .lang-3 { animation-duration: 12s; animation-delay: -3s; }
+        .lang-4 { animation-duration: 9s; animation-delay: -4.5s; }
+        .lang-5 { animation-duration: 11s; animation-delay: -6s; }
+        .lang-6 { animation-duration: 13s; animation-delay: -7.5s; }
+        .lang-7 { animation-duration: 14s; animation-delay: -9s; }
+        .lang-8 { animation-duration: 15s; animation-delay: -10.5s; }
+
+        /* --- Animations --- */
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink { 50% { border-color: transparent } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #serviceModal, #priceModal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px; }
+        .sim-container { width: 100%; min-height: 320px; background: #020617; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+        /* Discord UI Style */
+        .discord-ui { display: flex; height: 100%; width: 100%; font-family: sans-serif; text-align: left; direction: ltr; }
+        .discord-sidebar { width: 50px; background: #1e1f22; display: flex; flex-direction: column; align-items: center; padding-top: 10px; gap: 8px; }
+        .discord-channels { width: 100px; background: #2b2d31; padding: 10px; font-size: 11px; color: #949ba4; }
+        .discord-chat { flex: 1; background: #313338; padding: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .server-icon { width: 30px; height: 30px; background: #313338; border-radius: 50%; }
+        .channel-item { height: 12px; background: #3f4147; border-radius: 4px; margin-bottom: 5px; }
+
+        /* Shimmer Tags */
+        .shimmer-tag { position: relative; overflow: hidden; background: rgba(255, 255, 255, 0.05); }
+        .shimmer-tag::after { content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(60deg, transparent 20%, rgba(56, 189, 248, 0.2) 50%, transparent 80%); animation: shimmer 3s infinite linear; }
+        @keyframes shimmer { 0% { transform: translateX(-100%) rotate(30deg); } 100% { transform: translateX(100%) rotate(30deg); } }
+
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            transition: all 0.3s ease;
+        }
+        .insta-btn:hover {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(220, 39, 67, 0.4);
+        }
+
+        /* Device Selection Page */
+        #deviceSelection {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .selection-container {
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(56, 189, 248, 0.3);
+            border-radius: 24px;
+            padding: 50px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .device-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .device-option {
+            width: 180px;
+            padding: 30px 20px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .device-option:hover {
+            border-color: #38bdf8;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
+        }
+
+        .device-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .phone-icon { color: #38bdf8; }
+        .pc-icon { color: #818cf8; }
+    </style>
+</head>
+<body>
+
+    <!-- Device Selection Page -->
+    <div id="deviceSelection">
+        <div class="selection-container">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">مرحباً بك في عالم البرمجة</h1>
+            <p class="text-slate-300 text-lg mb-8">اختر وضع العرض المناسب لتجربة مثالية مع أعمالي البرمجية</p>
+            
+            <div class="device-options">
+                <div class="device-option" onclick="selectDevice('phone')">
+                    <div class="device-icon phone-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">وضع الهاتف</h3>
+                    <p class="text-slate-400 text-sm">عرض عمودي متوافق مع الشاشات الصغيرة</p>
+                </div>
+                
+                <div class="device-option" onclick="selectDevice('pc')">
+                    <div class="device-icon pc-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">وضع الكمبيوتر</h3>
+                    <p class="text-slate-400 text-sm">عرض أفقي كامل مع جميع المزايا</p>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <p class="text-slate-500 text-sm">اختيارك سيتم حفظه تلقائياً لزياراتك القادمة</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden until device selection) -->
+    <div id="mainContent" style="display: none;">
+
+        <!-- Navbar -->
+        <nav class="fixed w-full z-50 glass-card px-6 py-4 flex justify-between items-center border-b border-white/5">
+            <div class="text-2xl font-bold gradient-text">آلُــــعـــرآبـــ</div>
+            <div class="hidden md:flex space-x-reverse space-x-8">
+                <a href="#home" class="hover:text-sky-400 transition text-sm font-bold">الرئيسية</a>
+                <a href="#services" class="hover:text-sky-400 transition text-sm font-bold">الخدمات</a>
+                <a href="#about" class="hover:text-sky-400 transition text-sm font-bold">من أنا</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="pt-40 pb-20 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 space-y-6 text-center md:text-right">
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                    <span class="gradient-text">آلُــــعـــرآبـــ</span> <br>
+                    هاوي برمجة بمواصفات عالمية
+                </h1>
+                <p class="text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed">
+                    أبتكر حلولاً رقمية عصرية تتجاوز التوقعات، حيث ألغي الحدود بين المواقع والتطبيقات من خلال السلاسة المطلقة والأداء الفائق.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="#services" class="px-8 py-3 bg-sky-600 rounded-full font-bold hover:bg-sky-500 transition-all transform hover:scale-105 shadow-lg shadow-sky-500/25">استعرض خدماتي</a>
+                    <button onclick="openPriceModal()" class="px-8 py-3 bg-indigo-600/20 border border-indigo-500/50 rounded-full font-bold hover:bg-indigo-600 hover:text-white transition-all transform hover:scale-105">تفاصيل الأسعار</button>
+                    <a href="#about" class="px-8 py-3 border border-sky-600/50 rounded-full font-bold hover:bg-sky-600/10 transition-all">تعرف عليّ</a>
+                </div>
+            </div>
+            
+            <div class="flex-1 flex justify-center">
+                <div class="orb-container">
+                    <div class="center-node">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <!-- Extended Languages Orbit -->
+                    <div class="lang-icon lang-1">JavaScript</div>
+                    <div class="lang-icon lang-2">Python</div>
+                    <div class="lang-icon lang-3">C++</div>
+                    <div class="lang-icon lang-4">React</div>
+                    <div class="lang-icon lang-5">Node.js</div>
+                    <div class="lang-icon lang-6">Kotlin</div>
+                    <div class="lang-icon lang-7">PHP</div>
+                    <div class="lang-icon lang-8">SQL</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 px-6 max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">خدماتي المتكاملة</h2>
+                <p class="text-slate-400">حلول برمجية ذكية مصممة خصيصاً لاحتياجاتك برؤية عصرية</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- تطوير المواقع -->
+                <div onclick="openSim('web')" class="glass-card p-8 rounded-2xl tech-glow border-t-4 border-sky-500 group">
+                    <div class="text-sky-400 mb-4">
+                        <svg class="w-10 h-10 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">تطوير المواقع</h3>
+                    <p class="text-slate-400 text-sm">مواقع SPA سريعة جداً بتجربة مستخدم تضاهي التطبيقات المحملة.</p>
+                </div>
+                
+                <!-- تطبيقات أندرويد -->
+                <div onclick="openSim('android')" class="glass-card p-8 rounded-2xl tech-glow border-t-4 border-emerald-500 group">
+                    <div class="text-emerald-400 mb-4">
+                        <svg class="w-10 h-10 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">تطبيقات أندرويد</h3>
+                    <p class="text-slate-400 text-sm">تطبيقات متكاملة مع النظام بلمسة عصرية وتحكم كامل في الإمكانيات.</p>
+                </div>
+
+                <!-- لوحة التحكم -->
+                <div onclick="openSim('dashboard')" class="glass-card p-8 rounded-2xl tech-glow border-t-4 border-indigo-500 group">
+                    <div class="text-indigo-400 mb-4">
+                        <svg class="w-10 h-10 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">لوحات التحكم</h3>
+                    <p class="text-slate-400 text-sm">أنظمة داش بورد متطورة لمراقبة البيانات وإدارة العمليات لحظياً.</p>
+                </div>
+
+                <!-- بوتات تلجرام -->
+                <div onclick="openSim('telegram')" class="glass-card p-8 rounded-2xl tech-glow border-t-4 border-sky-600 group">
+                    <div class="text-sky-500 mb-4">
+                        <svg class="w-10 h-10 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">بوتات تلجرام</h3>
+                    <p class="text-slate-400 text-sm">أتمتة ذكية، ردود تلقائية، وإدارة مجموعات احترافية بذكاء برمجى.</p>
+                </div>
+
+                <!-- بوتات ديسكورد -->
+                <div onclick="openSim('discord')" class="glass-card p-8 rounded-2xl tech-glow border-t-4 border-blue-600 group">
+                    <div class="text-blue-600 mb-4">
+                        <svg class="w-10 h-10 group-hover:scale-110 transition" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037 19.736 19.736 0 0 0-4.885 1.515.069.069 0 0 0-.032.027C.533 9.048-.32 13.579.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.125-.094.249-.192.37-.29a.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .077.01c.12.098.246.196.372.29a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">بوتات ديسكورد</h3>
+                    <p class="text-slate-400 text-sm">أنظمة أوامر صوتية وتفاعل متقدم للسيرفرات الكبيرة.</p>
+                </div>
+
+                <!-- أنظمة المراسلة -->
+                <div onclick="openSim('messaging')" class="glass-card p-8 rounded-2xl tech-glow border-t-4 border-purple-500 group">
+                    <div class="text-purple-400 mb-4">
+                        <svg class="w-10 h-10 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">أنظمة المراسلة</h3>
+                    <p class="text-slate-400 text-sm">تطبيقات شات فورية مشفرة وسلسة للشبكات المحلية والعالمية.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-6">
+            <div class="max-w-5xl mx-auto glass-card p-8 md:p-12 rounded-3xl bio-gradient border-sky-500/20">
+                <div class="flex flex-col md:flex-row gap-10 items-center">
+                    <div class="flex-1 space-y-6 text-slate-300 leading-relaxed text-lg text-justify">
+                        <h2 class="text-3xl font-bold mb-4 gradient-text inline-block border-b-2 border-sky-500/30 pb-2">من أنا</h2>
+                        <p>
+                            أنا مبرمج <span class="text-sky-400 font-bold underline decoration-sky-500/30">عراقي</span> هاوٍ بشغف المحترفين، متخصص في هندسة البرمجيات وبناء الحلول الرقمية المتطورة. بدأت رحلتي من شغف عميق بكيفية عمل الأشياء، وتحول هذا الشغف إلى خبرة في تطوير المواقع، التطبيقات، وأنظمة الأتمتة.
+                        </p>
+                        <p>
+                            أؤمن بأن <span class="text-indigo-400 font-bold">المبرمج العراقي</span> يمتلك القدرة على الابتكار والمنافسة عالمياً. أركز في عملي على دمج الأداء القوي بالتصاميم العصرية، حيث أصمم المواقع لتكون <span class="text-emerald-400 font-bold">سريعة وسلسة</span> تضاهي في جودتها كبرى الشركات التقنية.
+                        </p>
+                        
+                        <div class="pt-4 flex flex-col sm:flex-row gap-6">
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-white">تواصل معي لطلب الخدمات:</h4>
+                                <a href="https://www.instagram.com/ar_c56?igsh=MXFyYWl3cXQ2OGJ2ZQ==" target="_blank" class="insta-btn inline-flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-white shadow-lg">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                    تابعني على إنستقرام
+                                </a>
+                            </div>
+                            <div class="flex flex-wrap gap-2 items-end">
+                                <span class="shimmer-tag px-3 py-1 border border-sky-500/30 rounded-lg text-xs font-bold text-sky-400">#مطور_عراقي</span>
+                                <span class="shimmer-tag px-3 py-1 border border-indigo-500/30 rounded-lg text-xs font-bold text-indigo-400">#برمجة_عصرية</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Simulation Modal -->
+        <div id="serviceModal" onclick="closeModal(event, 'serviceModal')">
+            <div class="glass-card max-w-4xl w-full p-8 rounded-3xl relative overflow-hidden" onclick="event.stopPropagation()">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 id="simTitle" class="text-2xl font-bold gradient-text"></h2>
+                    <button onclick="document.getElementById('serviceModal').style.display='none'" class="text-3xl hover:text-red-500">&times;</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div id="simDisplay" class="sim-container shadow-2xl"></div>
+                    <div class="space-y-4">
+                        <p id="simDesc" class="text-slate-300 leading-relaxed text-lg"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Modal -->
+        <div id="priceModal" onclick="closeModal(event, 'priceModal')">
+            <div class="glass-card max-w-2xl w-full p-8 rounded-3xl relative border-t-4 border-indigo-500" onclick="event.stopPropagation()">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold gradient-text">سياسة التسعير</h2>
+                    <button onclick="document.getElementById('priceModal').style.display='none'" class="text-3xl hover:text-red-500">&times;</button>
+                </div>
+                <div class="space-y-6">
+                    <div class="p-6 bg-indigo-500/5 rounded-2xl border border-indigo-500/20">
+                        <p class="text-xl text-slate-200 leading-relaxed">
+                            الأسعار تبدأ حسب <span class="text-indigo-400 font-bold">نوع الطلب</span> والخدمة، والتكلفة تحدد بناءً على:
+                        </p>
+                        <ul class="mt-4 space-y-3 text-slate-400">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                تعقيد التصميم المختار
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                حجم الإضافات البرمجية المطلوبة
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                المزايا التقنية المدمجة في النظام
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="text-lg text-sky-400 font-bold bg-sky-400/5 p-4 rounded-xl border border-sky-400/20">
+                        💡 ملاحظة: كلما كانت السلاسة أعلى والمزايا أكثر، يرتفع السعر لضمان تقديم أعلى جودة ممكنة.
+                    </p>
+                    <div class="flex justify-center">
+                        <button onclick="document.getElementById('priceModal').style.display='none'" class="px-10 py-3 bg-indigo-600 rounded-xl font-bold hover:bg-indigo-500 transition-all">فهمت ذلك</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Footer -->
+        <footer class="py-10 border-t border-slate-800 text-center text-slate-500">
+            <p>© 2025 جميع الحقوق محفوظة لـ <span class="text-sky-400 font-bold">آلُــــعـــرآبـــ</span></p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Enhanced protection against element inspection
+        (function() {
+            // Disable right click
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            // Disable keyboard shortcuts for developer tools
+            document.addEventListener('keydown', function(e) {
+                // Disable F12
+                if (e.key === 'F12' || e.keyCode === 123) {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+                if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Disable Ctrl+U (view source)
+                if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // Prevent opening developer tools by other methods
+            let devtools = /./;
+            devtools.toString = function() {
+                window.location.href = "about:blank";
+                return '';
+            };
+            console.log('%c', devtools);
+
+            // Detect if developer tools is open
+            setInterval(function() {
+                const before = new Date().getTime();
+                debugger;
+                const after = new Date().getTime();
+                if (after - before > 100) {
+                    document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#0f172a;color:white;font-size:24px;font-family:Cairo">🚫 غير مسموح بفحص العناصر</div>';
+                    window.stop();
+                }
+            }, 1000);
+
+            // Prevent element selection
+            document.addEventListener('selectstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            // Prevent drag and drop
+            document.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            // Disable text selection
+            document.styleSheets[0].insertRule(`
+                * {
+                    -webkit-user-select: none !important;
+                    -moz-user-select: none !important;
+                    -ms-user-select: none !important;
+                    user-select: none !important;
+                }
+            `);
+        })();
+
+        // Device selection functions
+        function selectDevice(deviceType) {
+            const selectionPage = document.getElementById('deviceSelection');
+            const mainContent = document.getElementById('mainContent');
+            
+            // Hide selection page
+            selectionPage.style.opacity = '0';
+            selectionPage.style.transition = 'opacity 0.5s ease';
+            
+            // Show main content after fade out
+            setTimeout(() => {
+                selectionPage.style.display = 'none';
+                mainContent.style.display = 'block';
+                
+                // Apply device-specific styles
+                if (deviceType === 'phone') {
+                    document.body.classList.add('vertical-mode');
+                    // Force vertical orientation
+                    const metaViewport = document.querySelector('meta[name="viewport"]');
+                    metaViewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                    
+                    // Add phone-specific styling
+                    document.body.classList.add('phone-layout');
+                    // Apply vertical layout adjustments
+                    document.querySelectorAll('section').forEach(section => {
+                        section.style.flexDirection = 'column';
+                    });
+                    
+                    // Hide some elements for mobile
+                    document.querySelectorAll('.hidden-on-phone').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                } else {
+                    // PC mode - ensure horizontal layout
+                    document.body.classList.add('horizontal-mode');
+                    const metaViewport = document.querySelector('meta[name="viewport"]');
+                    metaViewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+                }
+                
+                // Save choice to localStorage
+                localStorage.setItem('preferredDeviceMode', deviceType);
+            }, 500);
+        }
+
+        // Check for saved device preference
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedMode = localStorage.getItem('preferredDeviceMode');
+            if (savedMode) {
+                selectDevice(savedMode);
+            }
+            // If no saved preference, show selection page
+        });
+
+        const simulations = {
+            web: {
+                title: "هندسة المواقع التفاعلية",
+                desc: "محاكاة لعملية البرمجة الحية؛ حيث يتم كتابة الكود البرمجي ومعالجته ليتحول فوراً إلى واجهة مستخدم رسومية متكاملة وسريعة.",
+                render: () => `
+                    <div class="w-full h-full flex flex-col p-4 font-mono text-[10px] bg-[#010409]">
+                        <div class="flex-1 flex flex-col gap-1 overflow-hidden">
+                            <div class="text-blue-400 border-r-2 border-white animate-[typing_3s_steps(40)_infinite,blink_0.5s_infinite] whitespace-nowrap overflow-hidden">const app = new IraqiDeveloper();</div>
+                            <div class="text-purple-400 border-r-2 border-white animate-[typing_3s_steps(40)_2s_infinite,blink_0.5s_infinite] whitespace-nowrap overflow-hidden">app.build({ speed: 'ultra' });</div>
+                        </div>
+                        <div class="h-1/2 bg-white/5 rounded-lg border border-white/10 mt-4 p-2 relative overflow-hidden flex flex-col items-center justify-center animate-[slideIn_0.5s_ease-out_3.5s_both]">
+                             <div class="w-full h-2 bg-slate-700 rounded mb-2"></div>
+                             <div class="flex gap-2 w-full">
+                                <div class="w-8 h-8 bg-sky-500/20 rounded"></div>
+                                <div class="flex-1 space-y-2">
+                                    <div class="h-1 bg-slate-800 rounded w-3/4"></div>
+                                    <div class="h-1 bg-slate-800 rounded w-1/2"></div>
+                                </div>
+                             </div>
+                             <div class="absolute inset-0 bg-sky-500/10 animate-pulse"></div>
+                        </div>
+                    </div>
+                `
+            },
+            android: {
+                title: "تطبيقات الأندرويد الذكية",
+                desc: "واجهة محاكاة لهاتف ذكي تعرض تداخل العناصر المرئي وقوة التحكم في نظام التشغيل مع سلاسة التنقل المعهودة في أعمالي.",
+                render: () => `
+                    <div class="w-32 h-56 border-[6px] border-slate-800 rounded-[2.5rem] relative bg-slate-900 overflow-hidden shadow-2xl">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-4 bg-slate-800 rounded-b-xl z-10"></div>
+                        <div class="p-3 pt-6 flex flex-col gap-2">
+                            <div class="h-2 bg-emerald-500/30 rounded-full w-3/4 animate-pulse"></div>
+                            <div class="grid grid-cols-2 gap-2 mt-2">
+                                <div class="aspect-square bg-slate-700 rounded-lg animate-[slideIn_0.5s_ease-out]"></div>
+                                <div class="aspect-square bg-slate-700 rounded-lg animate-[slideIn_0.6s_ease-out]"></div>
+                                <div class="aspect-square bg-slate-700 rounded-lg animate-[slideIn_0.7s_ease-out]"></div>
+                                <div class="aspect-square bg-emerald-500 rounded-lg animate-[bounce_2s_infinite]"></div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-slate-700 rounded-full"></div>
+                    </div>
+                `
+            },
+            dashboard: {
+                title: "إدارة البيانات والتحليلات",
+                desc: "أنظمة تحكم متطورة تسمح لك بمراقبة نمو مشروعك وإدارة العملاء لحظياً عبر واجهات إحصائية دقيقة.",
+                render: () => `
+                    <div class="p-4 w-full flex flex-col gap-3">
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="h-14 bg-slate-800 rounded-lg flex flex-col justify-center px-3 border border-sky-500/30">
+                                <div class="text-[8px] text-slate-500">النشاط</div>
+                                <div class="text-xs font-bold text-sky-400">98%</div>
+                            </div>
+                            <div class="h-14 bg-slate-800 rounded-lg flex flex-col justify-center px-3 border border-indigo-500/30">
+                                <div class="text-[8px] text-slate-500">الأرباح</div>
+                                <div class="text-xs font-bold text-indigo-400">+25%</div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4 flex flex-col gap-3 border border-white/5">
+                            <div class="flex items-end gap-1 h-16">
+                                <div class="w-2 bg-sky-500/40 rounded-t h-[30%] animate-[bar-up_1s_ease-out]"></div>
+                                <div class="w-2 bg-sky-500/60 rounded-t h-[60%] animate-[bar-up_1.2s_ease-out]"></div>
+                                <div class="w-2 bg-sky-500 rounded-t h-[90%] animate-[bar-up_0.8s_ease-out]"></div>
+                                <div class="w-2 bg-sky-500/50 rounded-t h-[45%] animate-[bar-up_1.5s_ease-out]"></div>
+                                <div class="w-2 bg-sky-500 rounded-t h-[75%] animate-[bar-up_1.1s_ease-out]"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>@keyframes bar-up { from { height: 0 } }</style>
+                `
+            },
+            discord: {
+                title: "بوتات ديسكورد المتطورة",
+                desc: "أنظمة برمجية متكاملة لإدارة المجتمعات، مع دعم كامل للأوامر الصوتية والتفاعلية والردود الذكية.",
+                render: () => `
+                    <div class="discord-ui h-48">
+                        <div class="discord-sidebar">
+                            <div class="server-icon bg-indigo-500 rounded-xl flex items-center justify-center text-[10px] text-white">IRAQ</div>
+                        </div>
+                        <div class="discord-channels">
+                            <div class="channel-item bg-slate-700/50 border-r-2 border-indigo-500"></div>
+                            <div class="channel-item"></div>
+                        </div>
+                        <div class="discord-chat">
+                            <div class="bg-slate-800/50 p-2 rounded border-l-2 border-indigo-500 animate-[slideIn_0.4s_ease-out_forwards]">
+                                <div class="text-sky-400 text-[9px] font-bold">Al-Arrab Bot</div>
+                                <div class="text-white text-[8px]">تم تحليل البيانات. الحالة: مستقرة.</div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            telegram: {
+                title: "أتمتة بوتات التلجرام",
+                desc: "بوتات قادرة على معالجة آلاف الطلبات وتنفيذ العمليات البرمجية المعقدة في جزء من الثانية.",
+                render: () => `
+                    <div class="w-full flex flex-col items-center justify-center p-6 gap-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center border border-sky-500/30">
+                                <svg class="w-5 h-5 text-sky-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            </div>
+                            <div class="flex-1 h-1 w-24 bg-slate-800 relative overflow-hidden rounded-full">
+                                <div class="absolute inset-0 bg-sky-500/50 w-1/2 animate-[tele_1.5s_infinite_linear]"></div>
+                            </div>
+                            <div class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(56,189,248,0.5)]">
+                                <svg class="w-5 h-5 text-white animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2 w-full">
+                            <div class="bg-slate-800/50 p-2 rounded-lg text-[9px] border border-white/5 animate-[slideIn_0.5s_ease-out_both]">
+                                <span class="text-sky-400">REQUEST:</span> Fetch API Data
+                            </div>
+                            <div class="bg-sky-500/10 p-2 rounded-lg text-[9px] border border-sky-500/20 animate-[slideIn_0.5s_ease-out_1s_both]">
+                                <span class="text-emerald-400">RESPONSE:</span> Success [200 OK]
+                            </div>
+                        </div>
+                    </div>
+                    <style>@keyframes tele { from { left: -100% } to { left: 100% } }</style>
+                `
+            },
+            messaging: {
+                title: "أنظمة المراسلة الفورية",
+                desc: "تطوير شات فوري ومشفر يعتمد على تقنية الـ WebSockets لضمان تجربة تواصل خالية من التأخير.",
+                render: () => `
+                    <div class="flex flex-col gap-3 w-full max-w-[220px]">
+                        <div class="bg-slate-800 p-2 rounded-2xl rounded-br-none text-[10px] w-3/4 self-end border border-white/5 animate-[slideIn_0.4s_ease-out]">هل النظام آمن؟</div>
+                        <div class="bg-purple-600/20 p-2 rounded-2xl rounded-bl-none text-[10px] w-3/4 border border-purple-500/30 animate-[slideIn_0.4s_ease-out_0.6s_both]">نعم، تشفير كامل وحماية قصوى! 🔒</div>
+                        <div class="flex gap-1 mt-1 animate-pulse">
+                            <div class="w-1 h-1 bg-slate-600 rounded-full"></div>
+                            <div class="w-1 h-1 bg-slate-600 rounded-full"></div>
+                            <div class="w-1 h-1 bg-slate-600 rounded-full"></div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function openSim(key) {
+            const data = simulations[key];
+            const modal = document.getElementById('serviceModal');
+            document.getElementById('simTitle').innerText = data.title;
+            document.getElementById('simDesc').innerText = data.desc;
+            document.getElementById('simDisplay').innerHTML = data.render();
+            modal.style.display = 'flex';
+        }
+
+        function openPriceModal() {
+            document.getElementById('priceModal').style.display = 'flex';
+        }
+
+        function closeModal(e, id) { 
+            if(e.target.id === id) document.getElementById(id).style.display = 'none'; 
+        }
+
+        // Additional protection: detect if user tries to open devtools
+        let devtoolsOpen = false;
+        const threshold = 160;
+        const checkDevTools = () => {
+            const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+            const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+            if (widthThreshold || heightThreshold) {
+                devtoolsOpen = true;
+                document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#0f172a;color:red;font-size:24px;font-family:Cairo">🚫 تم اكتشاف فحص العناصر!</div>';
+                window.stop();
+            }
+        };
+        setInterval(checkDevTools, 1000);
+    </script>
+</body>
+</html>
